@@ -174,4 +174,22 @@ urlpatterns = [
 ]
 ```
 
+## 3、redis配置
+### 3.1 安装redis
+win下载地址：https://github.com/tporadowski/redis/releases
 
+linux:https://redis.io/docs/getting-started/installation/install-redis-on-linux/
+```shell
+pip install channels_redis
+```
+在setting.py中添加
+```python
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
+```
